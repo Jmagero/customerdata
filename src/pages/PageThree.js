@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
+
 
 export const PageThree = (props) => {
     const [ creditcard, setCreditCard] = useState(" ");
     const [ type, setType ] = useState("");
+    const history = useHistory();
+    const location = useLocation();
   
-    const { firstname, lastname, profession, state, street, zip, city } = props.location.state;
+    const { firstname, lastname, profession, state, street, zip, city } = location.state;
 
     const goToPageFour = () => {
-        props.history.push('/pagefour', 
+        history.push('/pagefour', 
         {   firstname : firstname, 
             lastname : lastname, 
             profession: profession,
