@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-
-export const PageOne = (props) => {
+import { useHistory } from "react-router-dom";
+export const PageOne = () => {
     const [ firstname, setFirstName ] = useState("");
     const [ lastname, setLastName ] = useState("");
     const [ profession, setProfession ] = useState("");
+    const history = useHistory();
 
     const goToPageTwo = (e) => {
-        e.preventDefault()
-        props.history.push('/pagetwo', {firstname : firstname, 
-            lastname : lastname, profession: profession})
+        e.preventDefault();
+        history.push("/pagetwo", { firstname: firstname, lastname: lastname, profession: profession });
     }
+    console.log(firstname);
 
     return (
-        <form onSubmit={goToPageTwo}>
+        <form>
             <h1>Please enter your personal information</h1>
             <div>
                 <h5>FirstName</h5>
@@ -46,7 +47,7 @@ export const PageOne = (props) => {
                 <option>Architect</option>
                 </select>
             </div>
-         <button type="submit">Next</button>
+         <button onClick={goToPageTwo}>Next</button>
         </form>
     );
 }
